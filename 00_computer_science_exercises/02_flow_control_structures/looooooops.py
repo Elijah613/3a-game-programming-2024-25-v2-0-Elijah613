@@ -1,4 +1,5 @@
 # Looooooops, Elijah Reed, v0.0
+import random # import the random module for us to use.
 
 # TWO TYPES OF LOOPS
 # for <-- Used when you know how many loops you'll need.
@@ -30,7 +31,25 @@
 #     print(eachFruit)
 
 # for loops using range(). range(x) is EXCLUSIVE, it starts at 0 and ends at x - 1
-for i in range(10): # range is 0 - 9
-    print(i)
+# for i in range(10): # range is 0 - 9
+#     print(i)
+# # Might not always want to start at 0.
+# for i in range(10, 100):
+#     print(i)
+
+# Not want to count by 1 -- RARE
+# for i in range(10, 100, 5): # 10 = start, 100 - 1 = stop, 5 = # to count by
+#     print(i)
+
+# # Sometimes you're not done writing the loops.
+# for i in range(10):
+#     pass # tells Python this loop isn't finished, don't freak out.
+
+# while loops -- Musical chairs
+playerScore = 0
+while playerScore < 100: # Run as long as this is True
+    print(f"Starting: {playerScore}")
+    playerScore += random.randint(1, 5)
+    print(f"After: {playerScore}")
 
 
