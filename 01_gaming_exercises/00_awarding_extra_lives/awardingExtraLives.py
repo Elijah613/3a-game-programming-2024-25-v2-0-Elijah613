@@ -12,16 +12,16 @@ lives = 3
 
 # Output the score and number of lives to the screen.
 
-score = input("Please type your score and press ENTER\n")
+score = int(input("Please type your score and press ENTER\n"))
 
 
-if int(score) <= 10000:
-    lives += -1
-elif int(score) > 10000:
-    lives += 1
-elif int(score) > 100000:
-    lives += 2
+if score <= 10000:
+    lives += -1 # Take away a Life
+elif score < 100001:
+    lives += 1 # Add one Life
+elif score > 100000:
+    lives += 2 # Add two Lives
 
-print("With a score of" + score + ", you now have" + lives + "lives.")
+print(f"\nWith a score of {score}, you now have {lives} lives.\n")
 
     
