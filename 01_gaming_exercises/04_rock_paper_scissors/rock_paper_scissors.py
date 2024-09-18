@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors by Elijah Reed, v0.3
+# Rock, Paper, Scissors by Elijah Reed, v0.4
 
 # MODULE IMPORTS
 import random
@@ -46,3 +46,20 @@ According to my calculations,
 Everything in between these quotes will be ignored.
 I'm such a genius
 """
+
+while playerScore < 5 and cpuScore < 5:
+    print(f"{playerName}, you have {playerScore} wins.\nThe CPU has {cpuScore} wins.")
+    playerChoice = input("Time to Choose. Rock, Paper, or Scissors?\n").lower()
+
+    if playerChoice != "rock" or playerChoice != "paper" or playerChoice != "scissors":
+            playerChoice = input("Try again. Rock, Paper, or Scissors?\n").lower()
+            if playerChoice != "rock" or playerChoice != "paper" or playerChoice != "scissors":
+                 print("Ladies and Gentlemen, let's give a warm round of applause for the person who thinks they are above the rules.")
+                 exit()
+            print(f"You have picked {playerChoice}")
+    else:
+         print(f"You have picked {playerChoice}")
+    # let CPU select choice at random
+    # compare player choice to CPU choice
+    # print the results to the screen
+    # award point to winner and output results
