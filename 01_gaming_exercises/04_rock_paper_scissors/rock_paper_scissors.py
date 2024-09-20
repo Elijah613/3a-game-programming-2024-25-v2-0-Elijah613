@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors by Elijah Reed, v0.5
+# Rock, Paper, Scissors by Elijah Reed, v0.6
 
 # MODULE IMPORTS
 import random
@@ -55,9 +55,9 @@ while playerScore < 5 and cpuScore < 5:
         if playerChoice != "rock" and playerChoice != "paper" and playerChoice != "scissors":
             print("Ladies and Gentlemen, let's give a warm round of applause for the person who thinks they are above the rules.")
             exit()
-        print(f"You have picked {playerChoice}.")
+        print(f"You have thrown {playerChoice}.")
     else:
-         print(f"You have picked {playerChoice}.")
+         print(f"You have thrown {playerChoice}.")
 
     # let CPU select choice at random
     cpuChoice = random.randint(0, 2) # randomly selects 0, 1, or 2.
@@ -70,8 +70,59 @@ while playerScore < 5 and cpuScore < 5:
     else:
         print("CPU decided to go on break. Restart and try Again")
         exit()
-    print(f"The CPU picked {cpuChoice}.\n")
+    # print(f"The CPU threw {cpuChoice}.\n")
 
     # compare player choice to CPU choice
-    # print the results to the screen
-    # award point to winner and output results
+    if playerChoice == "rock" and cpuChoice == "paper":
+        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
+        print("You lost this round, you suck!")
+        cpuScore += 1
+        # CPU Wins
+    elif playerChoice == "rock" and cpuChoice == "scissors":
+        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
+        print("You win this round, what a genius everybody.")
+        playerScore += 1
+        # Player Wins
+    elif playerChoice == "rock" and cpuChoice == "rock":
+        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
+        print("You tied with the CPU, run it back.")
+        # Draw
+    elif playerChoice == "paper" and cpuChoice == "rock":
+        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
+        print("You win this round, what a genius everybody..")
+        playerScore += 1
+        # Player Wins
+    elif playerChoice == "paper" and cpuChoice == "paper":
+        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
+        print("You tied with the CPU, run it back.")
+        # Draw
+    elif playerChoice == "paper" and cpuChoice == "scissors":
+        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
+        print("You lost this round, you suck!")
+        cpuScore += 1
+        # CPU Wins
+    elif playerChoice == "scissors" and cpuChoice == "rock":
+        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
+        print("You lost this round, you suck!")
+        cpuScore += 1
+        # CPU Wins
+    elif playerChoice == "scissors" and cpuChoice == "paper":
+        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
+        print("You win this round, what a genius everybody.")
+        playerScore += 1
+        # Player Wins
+    elif playerChoice == "scissors" and cpuChoice == "scissors":
+        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
+        print("You tied with the CPU, run it back.")
+        # Draw
+    else:
+        print("The game broke :/\n Restart and Try Again.")
+        exit()
+
+print(f"\nYour final score is {playerScore} and the CPU's final score is {cpuScore}.\n")
+if playerScore > cpuScore:
+    print(f"You actually won {playerName}, I can't believe it.\n")
+elif cpuScore > playerScore:
+    print("HAHA LOSER, YOU SUCK, YOU LOST!\n")
+else:
+    print("The game broke :/\n Restart and Try Again.")  
