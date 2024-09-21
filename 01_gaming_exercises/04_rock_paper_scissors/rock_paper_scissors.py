@@ -125,4 +125,5 @@ if playerScore > cpuScore:
 elif cpuScore > playerScore:
     print("HAHA LOSER, YOU SUCK, YOU LOST!\n")
 else:
-    print("The game broke :/\n Restart and Try Again.")  
+    print("The game broke :/\n Restart and Try Again.")
+exit()
