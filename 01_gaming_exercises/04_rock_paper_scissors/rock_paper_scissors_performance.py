@@ -12,8 +12,14 @@ numDraws = 0
 cpuScore = 0
 cpuChoice = None
 
-while playerScore < 5 and cpuScore < 5:
-    playerChoice = random.randint(0, 2) # randomly selects 0, 1, or 2.
+# MAIN GAME LOOP
+loopCount = 0
+loopsReq = int(input("How many loops do you want?\nEnter an integer, no commas, and press the ENTER key.\n"))
+rpsTimeStart = time.time() # returns the number of seconds since Jan. 01, 1970 @ 12:00AM
+
+while loopCount < loopsReq:
+
+    playerChoice = random.randint(0, 2)
     if playerChoice == 0:
         playerChoice = "rock"
     elif playerChoice == 1:
@@ -48,10 +54,7 @@ while playerScore < 5 and cpuScore < 5:
         print("You win this round, what a genius everybody.")
         playerScore += 1
         # Player Wins
-    elif playerChoice == "rock" and cpuChoice == "rock":
-        print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
-        print("You tied with the CPU, run it back.")
-        # Draw
+    
     elif playerChoice == "paper" and cpuChoice == "rock":
         print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
         print("You win this round, what a genius everybody..")
@@ -60,6 +63,7 @@ while playerScore < 5 and cpuScore < 5:
     elif playerChoice == "paper" and cpuChoice == "paper":
         print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
         print("You tied with the CPU, run it back.")
+        numDraws += 1
         # Draw
     elif playerChoice == "paper" and cpuChoice == "scissors":
         print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
@@ -79,16 +83,24 @@ while playerScore < 5 and cpuScore < 5:
     elif playerChoice == "scissors" and cpuChoice == "scissors":
         print(f"The CPU threw {cpuChoice} and you threw {playerChoice}.")
         print("You tied with the CPU, run it back.")
+        numDraws += 1
         # Draw
     else:
         print("The game broke :/\n Restart and Try Again.")
         exit()
+    loopCount += 1
 
-print(f"\nYour final score is {playerScore} and the CPU's final score is {cpuScore}.\n")
+print(f"\nYour final score is {playerScore} and the CPU's final score is {cpuScore} and there was {numDraws} draws.")
 if playerScore > cpuScore:
-    print(f"You actually won {playerName}, I can't believe it.\n")
+    print(f"You actually won, I can't believe it.\n")
 elif cpuScore > playerScore:
     print("HAHA LOSER, YOU SUCK, YOU LOST!\n")
 else:
     print("The game broke :/\n Restart and Try Again.")
-exit()
+    exit()
+
+
+rpsTimeStop = time.time()
+rpsTime = rpsTimeStop - rpsTimeStart
+print(f"# of Loops: {loopCount}")
+print(f"Execution Time {rpsTime:.2F} seconds.\n") # :.2F cuts the value down to 2 decimal places.
