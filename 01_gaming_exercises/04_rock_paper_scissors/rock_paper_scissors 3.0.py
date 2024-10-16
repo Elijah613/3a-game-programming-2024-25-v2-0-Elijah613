@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors by Elijah Reed, v0.6
+# Rock, Paper, Scissors by Elijah Reed, v0.9
 
 # MODULE IMPORTS
 import random
@@ -12,18 +12,22 @@ playerScore =  0
 cpuScore = 0
 cpuChoice = None
 
-# PLAYER NAME INPUT
-playerName = input("Please enter your name and press the ENTER key.\n")
-print(f"Your name is {playerName}")
-isCorrect = input("Is that correct? Type yes or no then press the ENTER key.\n").lower()
+# PLAYER NAME INPUT 
+def playerName():
+    playerName = input("Please enter your name and press the ENTER key.\n")
+    print(f"Your name is {playerName}")
+    isCorrect = input("Is that correct? Type yes or no then press the ENTER key.\n").lower()
 
 # .lower() can turn ALL input into lowercase
 # .upper() can turn ALL input into uppercase
 
-if isCorrect == "yes":
-    print(f"Now {playerName}, let's play Rock, Paper, Scissors!\n")
-else:
-    playerName = input("Type your name correctly this time.\n")
+    if isCorrect == "yes":
+        print(f"Now {playerName}, let's play Rock, Paper, Scissors!\n")
+    else:
+        playerName = input("Type your name correctly this time.\n")
+
+# CALLING THE FUBCTION
+playerName()
 
 # THE RULES using MUTLI-LINE STRINGS
 print(f"""
