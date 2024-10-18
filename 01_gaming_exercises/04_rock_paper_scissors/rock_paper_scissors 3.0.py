@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors by Elijah Reed, v0.11
+# Rock, Paper, Scissors by Elijah Reed, v0.12
 
 # MODULE IMPORTS
 import random
@@ -136,6 +136,14 @@ def pickWinner(playerChoice:str,cpuChoice:str) -> str: # playerChoice and cpuCho
         return "Game Bug"
     # return statements exit a function
 
+def score(winner:str) -> int:
+    """This function uses the winner to update the score for the CPU, Draws, and Player score."""
+    if winner == "Player Wins":
+        score = 1
+    elif winner == "Cpu Wins":
+        score = 1
+    elif winner == "Draw":
+        score = 0
 while playerScore < 5 and cpuScore < 5:
     print(f"{playerName}, you have {playerScore} wins.\nThe CPU has {cpuScore} wins.")
     playerChoice = playerChoice()
