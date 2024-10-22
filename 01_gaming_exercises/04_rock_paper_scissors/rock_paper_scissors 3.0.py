@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors by Elijah Reed, v0.13
+# Rock, Paper, Scissors by Elijah Reed, v0.14
 
 # MODULE IMPORTS
 import random
@@ -76,6 +76,7 @@ def cpuChoice() -> str:
         print("CPU decided to go on break. Restart and try Again")
         exit()
     print(f"The CPU threw {cpuChoice}.\n")
+    return cpuChoice
 
 def pickWinner(playerChoice:str,cpuChoice:str) -> str: # playerChoice and cpuChoice are both ARGUMENTS, they will be string values.
     """This function uses the player and CPU choices to decide a winner."""
@@ -125,17 +126,11 @@ def score(winner:str) -> int:
     """This function uses the winner to update the score for the CPU, Draws, and Player score."""
     if winner == "Player Wins":
         score = 1
-    elif winner == "Cpu Wins":
+    elif winner == "CPU Wins":
         score = 1
     elif winner == "Draw":
         score = 0
     return score
-while playerScore < 5 and cpuScore < 5:
-    print(f"{playerName}, you have {playerScore} wins.\nThe CPU has {cpuScore} wins.")
-    playerChoice = playerChoice()
-    cpuChoice = cpuChoice()
-
-    # compare player choice to CPU choice
 
 def matchWinner(playerScore: int, cpuScore: int) -> bool:
 
@@ -160,7 +155,7 @@ def playGame(playerScore: int, cpuScore: int) -> None:
         if roundWinner == "CPU Wins":
             cpuScore += score(roundWinner)
 
-        print(f"You have a score of {playerScore}.\n")
+        print(f"\nYou have a score of {playerScore}.")
         print(f"The CPU has a score of {cpuScore}.\n")
 
         if matchWinner(playerScore, cpuScore) == True:
