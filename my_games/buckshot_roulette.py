@@ -30,33 +30,33 @@ while playerHealth != 0 and dealerHealth != 0:
         print(f"{lives} live rounds, {blanks} blanks.")
         print(f"I load the rounds in the shotgun in a random order.")
         print("Now make your decision.")
-    while playerChoice != "dealer":
-        playerChoice = input("Should you shoot yourself or the dealer?\nType YOURSELF or DEALER then press ENTER.\n").lower
-        shotgunRound = random.randint(1,2)
-        if shotgunRound == 1:
-            shotgunRound = "blank"
-        elif shotgunRound == 2:
-            shotgunRound = "live"
+        while playerChoice != "dealer" or shotgunRound == "live":
+            playerChoice = input("Should you shoot yourself or the dealer?\nType YOURSELF or DEALER then press ENTER.\n").lower
+            shotgunRound = random.randint(0,1)
+            if shotgunRound == 0:
+                shotgunRound = "blank"
+            elif shotgunRound == 1:
+                shotgunRound = "live"
 
-        if playerChoice == "yourself" and shotgunRound == "blank":
-            blanks -= 1
-            print("*Click*\n")
-            continue
-        elif playerChoice == "yourself" and shotgunRound == "live":
-            lives -= 1
-            playerHealth -= 1
-            print("*BANG*")
-            print(f"{playerName} has {playerHealth} health remaining.")
-            print(f"The Dealer has {dealerHealth} remaining.")
-        elif playerChoice == "dealer" and shotgunRound == "blank":
-            blanks -= 1
-            print("*Click*\n")
-            print("Dealer: My turn.")
-        elif playerChoice == "dealer" and shotgunRound == "live":
-            lives -= 1
-            dealerHealth -= 1
-            print("*BANG*")
-            print(f"{playerName} has {playerHealth} health remaining.")
-            print(f"The Dealer has {dealerHealth} remaining.\n")
-            print("Dealer: My turn.")
+            if playerChoice == "yourself" and shotgunRound == "blank":
+                blanks -= 1
+                print("*Click*\n")
+                continue
+            elif playerChoice == "yourself" and shotgunRound == "live":
+                lives -= 1
+                playerHealth -= 1
+                print("*BANG*")
+                print(f"{playerName} has {playerHealth} health remaining.")
+                print(f"The Dealer has {dealerHealth} remaining.")
+            elif playerChoice == "dealer" and shotgunRound == "blank":
+                blanks -= 1
+                print("*Click*\n")
+                print("Dealer: My turn.")
+            elif playerChoice == "dealer" and shotgunRound == "live":
+                lives -= 1
+                dealerHealth -= 1
+                print("*BANG*")
+                print(f"{playerName} has {playerHealth} health remaining.")
+                print(f"The Dealer has {dealerHealth} remaining.\n")
+                print("Dealer: My turn.")
             
