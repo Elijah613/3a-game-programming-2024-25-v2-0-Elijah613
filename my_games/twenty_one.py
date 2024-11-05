@@ -87,12 +87,10 @@ while playerScore < 5 and cpuScore < 5:
 
         elif cpuChoice == "stay":
             print("The CPU chose to stay.")
+             
 
     if cpuTotal > 21:
         print(f"The CPU bust with a total of {cpuTotal}")
-        playerTotal = 0
-        cpuTotal = 0
-
         if playerTotal <= 21 and cpuTotal <= 21:
             print("\nBoth of you have stayed.")
             print(f"You had {playerTotal} and the CPU had {cpuTotal}.")
@@ -100,10 +98,13 @@ while playerScore < 5 and cpuScore < 5:
             if playerTotal > cpuTotal:
                 playerScore += 1
                 print("You won this round.")
-        
             elif playerTotal < cpuTotal:
                 cpuScore += 1
                 print("You lost this round.")
+
+    playerTotal = 0
+    cpuTotal = 0
+
 
 # For HIT -- Give the player another card and add it to their total.
 # For STAY -- Pass the turn to the CPU.
