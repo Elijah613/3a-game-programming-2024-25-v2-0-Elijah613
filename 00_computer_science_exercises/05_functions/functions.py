@@ -12,10 +12,17 @@ def helloWorldMulti(): # FUNCTION STRUCTURE
     [E]nglish
     [S]panish
     [J]apanese
-    [K]orean
     """)
 
 # allow the user to select (input) a choice for the language
 language = input("What language do you want?\n Please type the first letter of the language you want.\n").upper()
+if language == "S":
+    print("Hola, Mundo!")
+elif language == "E":
+    print("Hello, World!")
+else:
+    print("Konichiwa, Sekai!")
 
-# print
+#helloWorldMulti()
+
+# function to 
