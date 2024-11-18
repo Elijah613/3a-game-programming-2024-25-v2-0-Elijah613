@@ -1,4 +1,4 @@
-# Dragon Realm, Elijah Reed, v0.2
+# Dragon Realm, Elijah Reed, v0.3
 
 import random
 import time
@@ -20,20 +20,20 @@ saveData = open(logFileName, "a")
 saveData.write("GAME STARTED" + " " + str(datetime.datetime.now()) + "\n")
 
 sanity = 100
+evidence = 0
 items = 0
 hasUSB = False
 hasCoffee = False
 hasPen = False
 knowsAddress = False
-hasKnife = False
 
 def displayIntro():
 
     print("""
     
-You find yourself in a twisted office building, there is two rooms in front of you
-that lead to unknown horrors. Your memory is fuzzy and you can't remember the way 
-out. Guess you have to rely on instinct.
+You find yourself in a twisted office building, there is two identical rooms in front of you
+that lead to unknown horrors. Your memory is fuzzy and you can't remember the way out. 
+Guess you have to rely on instinct.
     
     """)
 
@@ -44,7 +44,7 @@ def chooseDoor():
         doors = input("\n")
     return doors
 
-def checkRoom(chosenRoom, sanity):
+def checkRoom(chosenRoom, sanity, evidence):
     print('You approach the door...')
     time.sleep(1)
     print('It is strangely familiar...')
@@ -64,9 +64,11 @@ def checkRoom(chosenRoom, sanity):
     else:
         print('IT came out of the drawer and grabs you!')
         time.sleep(1)
-        print("That room was corrupted. You're losing sanity.\n")
+        print("You shake IT free but it cut your arm and left some dark substance.\n")
+        evidence += 1
         sanity -= 20
-        print(f"You have {sanity} sanity left.")
+        print(f"You have {sanity} sanity left.\n")
+        print("IT disappeared and there's some items in the drawer.")
 
 def roomScenarioComputer(hasUSB: bool, sanity):
     print('In this room, there is a computer that might work.')
@@ -74,16 +76,14 @@ def roomScenarioComputer(hasUSB: bool, sanity):
 
     if hasUSB == True:
         print('You put the USB in the computer...')
-        time.sleep(2)
+        time.sleep(1)
         print("Records of different employees show up, you've seen these names before")
+        time.sleep(1)
         print("There's an address listed under the name, you should probably go there.")
-        time.sleep(2)
-        print("The USB twisted into a knife... weird.")
+        time.sleep(1)
         print('The computer crashed, oh well.\n')
-        time.sleep(2)
-        hasKnife = True
+        time.sleep(1)
         knowsAddress = True
-        return hasKnife and knowsAddress
     elif hasUSB == False:
         print('You turned on the computer... nothing happened.')
         print('The computer crashed, oh well.\n')
@@ -100,14 +100,41 @@ def roomScenarioComputer(hasUSB: bool, sanity):
     print("You found the exit... where to now?")
     print("Upon leaving the OFFICE, you notice something...")
     print("The CITY is ruined, everything is abandoned, twisted and dark... what happened?")
+    return knowsAddress
 
-def roomScenarioWarehouse(knowsAddress: bool, hasKnife: bool, hasPen: bool):
+def roomScenarioWarehouse(knowsAddress: bool, hasPen: bool, sanity, evidence): 
     if knowsAddress == True:
         print("You decide to go to that address you found on that old computer.")
+        time.sleep(1)
         print("It's a WAREHOUSE...")
+        time.sleep(1)
         print("Head inside, you never know what awaits.")
+        time.sleep(1)
         print("While you're looking around, IT jumps out at you.")
+        time.sleep(1)
         print("IT is the most grotesque thing you've ever seen.")
+        time.sleep(1)
+        print("IT's aura is filled with bloodlust, I don't think it plans to keep you alive!")
+        time.sleep(1)
+        print("IT charges you!")
+        time.sleep(1)
+        print("IT jumped at you and used some strange power on you!")
+        time.sleep(1)
+        print("You are seeing your past, your friends, your kids... where did they all go?")
+        time.sleep(1)
+        print("Will you be able to get out of this nightmare? How can you escape?")
+        time.sleep(1)
+        print("You snap back to reality, quickly get away before IT attacks you again!")
+        time.sleep(1)
+        sanity -= 40
+        print("You made it out of the WAREHOUSE, you should draw what it looks like in case you need evidence.")
+        if hasPen == True:
+            print("You draw IT, this mediocre drawing may come in handy.")
+            evidence += 1
+        elif hasPen == False:
+            print("You don't have a pen, nevermind.")
+        time.sleep(1)
+        print("After everything that happened in there, you might as well look around the city.")
 
     elif knowsAddress == False:
         print("Might as well look around the city.")
@@ -117,7 +144,7 @@ playAgain = 'yes'
 while playAgain == 'yes' or playAgain == 'y':
     displayIntro()
     roomNumber = chooseDoor()
-    checkRoom(roomNumber, sanity)
+    checkRoom(roomNumber, sanity, evidence)
     while items != 2:
         print('Take an item.')
         itemChoice = input('The [P]en and paper, the [U]SB, or the [C]offee on the desk.\n').upper()
@@ -144,7 +171,8 @@ while playAgain == 'yes' or playAgain == 'y':
         saveData.write("The player chose coffee.")
 
     print('You have your garbage, now proceed.\n')
-    roomScenarioComputer(hasUSB)
+    roomScenarioComputer(hasUSB, sanity)
+    roomScenarioWarehouse(knowsAddress, hasPen, sanity, evidence)
     print('Do you want to play again? (yes or no)\n')
     playAgain = input()
 
