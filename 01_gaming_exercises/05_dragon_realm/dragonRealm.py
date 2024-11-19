@@ -1,4 +1,4 @@
-# Dragon Realm, Elijah Reed, v0.3
+# Dragon Realm, Elijah Reed, v0.4
 
 import random
 import time
@@ -60,6 +60,7 @@ def checkRoom(chosenRoom, sanity, evidence):
         print('You find some old items and a note.')
         time.sleep(1)
         print('The note says "Only take two." Who wrote this?')
+        saveData.write("The player entered the safe room.")
 
     else:
         print('IT came out of the drawer and grabs you!')
@@ -69,6 +70,7 @@ def checkRoom(chosenRoom, sanity, evidence):
         sanity -= 20
         print(f"You have {sanity} sanity left.\n")
         print("IT disappeared and there's some items in the drawer.")
+        saveData.write("The player entered the dangerous room.")
 
 def roomScenarioComputer(hasUSB: bool, sanity):
     print('In this room, there is a computer that might work.')
@@ -102,8 +104,9 @@ def roomScenarioComputer(hasUSB: bool, sanity):
     print("The CITY is ruined, everything is abandoned, twisted and dark... what happened?")
     return knowsAddress
 
-def roomScenarioWarehouse(knowsAddress: bool, hasPen: bool, sanity, evidence): 
+def roomScenarioWarehouse(knowsAddress: bool, hasPen: bool, sanity, evidence):
     if knowsAddress == True:
+        saveData.write("The player went to the warehouse.")
         print("You decide to go to that address you found on that old computer.")
         time.sleep(1)
         print("It's a WAREHOUSE...")
@@ -120,9 +123,9 @@ def roomScenarioWarehouse(knowsAddress: bool, hasPen: bool, sanity, evidence):
         time.sleep(1)
         print("IT jumped at you and used some strange power on you!")
         time.sleep(1)
-        print("You are seeing your past, your friends, your kids... where did they all go?")
+        print("-- You are seeing your past, your friends, your kids... where did they all go? --")
         time.sleep(1)
-        print("Will you be able to get out of this nightmare? How can you escape?")
+        print("-- Will you be able to get out of this nightmare? How can you escape? --")
         time.sleep(1)
         print("You snap back to reality, quickly get away before IT attacks you again!")
         time.sleep(1)
@@ -131,13 +134,16 @@ def roomScenarioWarehouse(knowsAddress: bool, hasPen: bool, sanity, evidence):
         if hasPen == True:
             print("You draw IT, this mediocre drawing may come in handy.")
             evidence += 1
+            saveData.write("The player drew the monster.")
         elif hasPen == False:
             print("You don't have a pen, nevermind.")
+            saveData.write("The player didn't draw the monster.")
         time.sleep(1)
         print("After everything that happened in there, you might as well look around the city.")
 
     elif knowsAddress == False:
         print("Might as well look around the city.")
+        saveData.write("The player didn't go to the warehouse.")
 
 playAgain = 'yes'
 
