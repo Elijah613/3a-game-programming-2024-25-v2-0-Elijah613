@@ -1,4 +1,4 @@
-# Dragon Realm, Elijah Reed, v0.4
+# Dragon Realm, Elijah Reed, v0.5
 
 import random
 import time
@@ -72,7 +72,7 @@ def checkRoom(chosenRoom, sanity, evidence):
         print("IT disappeared and there's some items in the drawer.")
         saveData.write("The player entered the dangerous room.")
 
-def roomScenarioComputer(hasUSB: bool, sanity):
+def roomScenarioComputer(hasUSB: bool, knowsAddress: bool):
     print('In this room, there is a computer that might work.')
     time.sleep(1)
 
@@ -91,20 +91,17 @@ def roomScenarioComputer(hasUSB: bool, sanity):
         print('The computer crashed, oh well.\n')
 
     print("Upon leaving the room, you spot the stairs")
-    print("Head on down, I'm sure nothing bad will happen.")
-    stairTrip = random.randint(1,2)
-    if stairTrip == 1:
-        print("You made down the stairs, nice job :)")
-    elif stairTrip == 2:
-        print("You fell through the stairs, how???")
-        sanity -= 20
-        print(f"You have {sanity} sanity left, be careful.")
-    print("You found the exit... where to now?")
+    time.sleep(1)
+    print("Head on down, the exit has to be down there.")
+    time.sleep(1)
+    print("You find the exit... where to now?")
+    time.sleep(1)
     print("Upon leaving the OFFICE, you notice something...")
+    time.sleep(1)
     print("The CITY is ruined, everything is abandoned, twisted and dark... what happened?")
     return knowsAddress
 
-def roomScenarioWarehouse(knowsAddress: bool, hasPen: bool, sanity, evidence):
+def roomScenarioWarehouse(knowsAddress: bool, hasPen: bool, sanity: int, evidence: int):
     if knowsAddress == True:
         saveData.write("The player went to the warehouse.")
         print("You decide to go to that address you found on that old computer.")
@@ -168,16 +165,16 @@ while playAgain == 'yes' or playAgain == 'y':
     print("You grabbed: ")
     if hasPen:
         print("- A pen.")
-        saveData.write("The player chose the pen.")
+        saveData.write("The player chose the pen.\n")
     if hasUSB:
         print("- The USB.")
-        saveData.write("The player chose the USB.")
+        saveData.write("The player chose the USB.\n")
     if hasCoffee:
         print("- Coffee.")
-        saveData.write("The player chose coffee.")
+        saveData.write("The player chose coffee.\n")
 
     print('You have your garbage, now proceed.\n')
-    roomScenarioComputer(hasUSB, sanity)
+    roomScenarioComputer(hasUSB, sanity, knowsAddress)
     roomScenarioWarehouse(knowsAddress, hasPen, sanity, evidence)
     print('Do you want to play again? (yes or no)\n')
     playAgain = input()
