@@ -1,4 +1,5 @@
 # Dragon Realm, Elijah Reed, v0.5
+# Awesome job so far!  If you have any finishing touches please add them. 
 
 import random
 import time
