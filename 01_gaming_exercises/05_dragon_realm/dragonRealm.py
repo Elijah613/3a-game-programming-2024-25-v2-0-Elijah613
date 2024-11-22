@@ -45,7 +45,7 @@ def chooseDoor():
     return doors
 
 def checkRoom(chosenRoom, sanity, evidence):
-    print('You approach the door...')
+    print('\nYou approach the door...')
     time.sleep(1)
     print('It is strangely familiar...')
     time.sleep(1)
@@ -72,7 +72,7 @@ def checkRoom(chosenRoom, sanity, evidence):
         print("IT disappeared and there's some items in the drawer.")
         saveData.write("The player entered the dangerous room.")
 
-def roomScenarioComputer(hasUSB: bool, knowsAddress: bool):
+def roomScenarioComputer(hasUSB: bool):
     print('In this room, there is a computer that might work.')
     time.sleep(1)
 
@@ -174,7 +174,7 @@ while playAgain == 'yes' or playAgain == 'y':
         saveData.write("The player chose coffee.\n")
 
     print('You have your garbage, now proceed.\n')
-    roomScenarioComputer(hasUSB, sanity, knowsAddress)
+    roomScenarioComputer(hasUSB)
     roomScenarioWarehouse(knowsAddress, hasPen, sanity, evidence)
     print('Do you want to play again? (yes or no)\n')
     playAgain = input()
