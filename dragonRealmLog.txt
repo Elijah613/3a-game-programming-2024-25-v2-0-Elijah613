@@ -1,4 +1,12 @@
-GAME STARTED 2024-11-19 18:27:42.975952
-The player entered the dangerous room.The player chose the pen.The player chose the USB.GAME STARTED 2024-11-20 10:21:03.059052
-The player entered the dangerous room.The player chose the pen.
+GAME STARTED 2024-11-25 21:20:59.240989
+The player entered the dangerous room.
+The player chose the pen.
 The player chose the USB.
+GAME STARTED 2024-11-25 22:17:34.893758
+The player entered the safe room.
+The player chose the pen.
+The player chose the USB.
+The player went to the warehouse.
+The player drew the monster.
+GAME STARTED 2024-11-25 22:18:40.288086
+The player entered the dangerous room.
